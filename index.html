@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="theme-color" content="#f8fafc" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-messaging.js"></script>
+    <title>My Portfolio</title>
+  </head>
+  <body>
+    <!-- Start Navbar -->
+    <nav id="desktop-nav">
+      <div class="logo">My Porto</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#profile">FCM</a></li>
+          <li><a href="#projects">IndexedDB</a></li>
+          <li><a href="#about">CV</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Sigit Januarto
+      </div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#profile" onclick="toggleMenu()">FCM</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">IndexedDB</a></li>
+          <li><a href="#about" onclick="toggleMenu()">CV</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <!-- Finish Navbar -->
+
+    <!-- Start Profilr -->
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/me1-modified.webp" alt="Sigit Januarto profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Sigit Januarto
+
+        </h1>
+        <p class="section__text__p2">Junior Web Developer</p>
+        <div class="btn-container">
+        <div id="token"></div>
+        <div id="msg"></div>
+        <div id="notis"></div>
+        <div id="err"></div>
+          <button
+            class="btn btn-color-2" 
+            id="tombol"
+          >
+            Allo Push Notifications
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button>
+        </div>
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://www.linkedin.com/in/sigit-j-813765293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'"
+          />
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/SigitJanuarto0'"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- Finish Profilr -->
+
+    <!-- Start IndexDB -->
+    <section id="projects">
+      <h1 class="title">IndexedDB</h1>
+      <div class="details-container">
+        <div class="article-container">
+          <form id="comment_db">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required><br><br>
+            
+            <label for="desc">Komentar:</label>
+            <textarea id="desc" name="desc" required></textarea><br><br>
+            
+            <button type="submit" onclick="simpankomen()">Submit</button>
+        </form>
+        </div>
+      </div>
+    </section>
+    <!-- Finish Project -->
+    
+    <!-- Start About -->
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <br>
+      <br>
+      <br>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/me2.webp"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p>SMK NEGERI 3 TEGAL<br />STMIK YMI TEGAL</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>Nama        : Sigit Januarto</p>
+            <p>Nim         : 21156006</p>
+            <p>Kelas       : Regular Pagi</p>
+            <p>Semester    : 5</p>
+            <p>Mata Kuliah : Pemrograman Perangkat Bergerak</p>
+            <br>
+            <p>Tujuan belajar PWA</p>
+            <p>
+              Tujuan belajar Progressive Web Apps (PWA) adalah untuk mengembangkan aplikasi web yang 
+              memiliki kemampuan lebih dari sekadar situs web biasa. PWA menggabungkan teknologi web modern 
+              dengan beberapa fitur aplikasi native untuk memberikan pengalaman pengguna yang lebih baik.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
+    </section>
+    <!-- Finish About -->
+
+    <!-- Start Contact -->
+    <section id="contact">
+      <br>
+      <br>
+      <br>
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="sigitjanuarto8@gmail.com">sigitjanuarto8@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://www.linkedin.com/in/sigit-j-813765293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+    <!-- Finish Contact -->
+
+    <!-- Start Footer -->
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2023 Mr.Lonely. All Rights Reserved.</p>
+    </footer>
+    <!-- Finish Footer -->
+
+    <script>
+      window.addEventListener("load", () => {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("sw.js")
+        }
+      })
+
+      // Minta izin notifikasi
+      if ('Notification' in window) {
+        Notification.requestPermission()
+          .then(function (permission) {
+            if (permission === 'granted') {
+              showNotification('Selamat datang!', 'Terima kasih telah menggunakan PWA ini.'); 
+              alert('Terima kasih sudah accept');
+            }
+            else if (permission === 'denied') {
+              // Izin diblokir
+              alert('Yahah kasihan diblokir');
+          }
+          });
+      }
+
+      // Fungsi untuk menampilkan notifikasi
+      function showNotification(title, message) {
+        if ('Notification' in window && Notification.permission === 'granted') {
+          navigator.serviceWorker.ready.then(function (registration) {
+            registration.showNotification(title, {
+              body: message,
+              icon: './assets/me1-modified.webp'
+            });
+          });
+        }
+      }
+    </script>
+    
+    <script>
+      MsgElem = document.getElementById('msg');
+      TokenElem = document.getElementById('token');
+      NotisElem = document.getElementById('notis');
+      ErrElem = document.getElementById('err');
+      const tombol = document.getElementById('tombol');
+      // Initialize Firebase
+      // TODO: Replace with your project's customized code snippet
+      var config = {
+        apiKey: "AIzaSyCOrj0MiGwNjTn1wiGlyqx9LV-znCmi_mI",
+        authDomain: "notifikasiv1.firebaseapp.com",
+        projectId: "notifikasiv1",
+        storageBucket: "notifikasiv1.appspot.com",
+        messagingSenderId: "395001630450",
+        appId: "1:395001630450:web:4f55d08527e6dc83844a6b",
+        measurementId: "G-MYZ0PDQ2GR"
+      };
+
+      firebase.initializeApp(config);
+      const messaging = firebase.messaging();
+      
+      tombol.onclick = function() {
+
+      messaging
+        .requestPermission()
+        .then(() => {
+          // MsgElem.innerHTML = 'Notification permission granted.';
+          console.log('Notification permission granted.');
+
+          // get the token in the form of promise
+          return messaging.getToken();
+        })
+        .then(token => {
+          // TokenElem.innerHTML = 'token is : ' + token;
+          console.log(token);
+        })
+        .catch(err => {
+          ErrElem.innerHTML = ErrElem.innerHTML + '; ' + err;
+          console.log('Unable to get permission to notify.', err);
+        });
+      }
+
+
+      messaging.onMessage(function(payload) {
+        console.log('Message received. ', payload);
+        NotisElem.innerHTML = NotisElem.innerHTML + JSON.stringify(payload);
+        //kenng - foreground notifications
+        const { title, ...options } = payload.notification;
+        navigator.serviceWorker.ready.then(registration => {
+          registration.showNotification(title, options);
+        });
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
